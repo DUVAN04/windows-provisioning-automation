@@ -18,14 +18,14 @@ Para garantizar la compatibilidad y evitar errores de clonación, el proceso se 
 
 Dada la inestabilidad de los archivos de respuesta XML en ciertos entornos, se implementó una solución basada en scripts para gestionar el ciclo completo de despliegue:
 
-### A. Preparación y Aplicación (`Deployment_W11.bat`)
+### A. Preparación y Aplicación (`w11_deployment_automatization.bat`)
 * **Gestión de Almacenamiento**: Automatización de `diskpart` para la limpieza del disco y estructuración de particiones GPT/UEFI (EFI 260MB, MSR y Primaria).
 * **Aplicación de Imagen**: Despliegue de la imagen personalizada `install.wim` mediante `dism /Apply-Image`.
 * **Configuración de Arranque**: Generación de archivos de inicio UEFI mediante `bcdboot`.
 * **Inyección de Registro Offline**: Modificación del registro para omitir requisitos de red (BypassNRO) y configurar el AutoLogon inicial.
 * **Post-Instalación**: Creación automática de la cuenta administrativa local a través de un script `SetupComplete.cmd`.
 
-### B. Optimización de Sistema (`System_Optimization.bat`)
+### B. Optimización de Sistema (`system_optimization.bat`)
 * **Identidad de Red**: Generación automática de *hostnames* basada en el número de serie único del BIOS extraído vía CIM.
 * **Ajuste de Rendimiento (Kernel Tuning)**: Deshabilitación de la seguridad basada en virtualización (VBS/HVCI) y la compresión de memoria para maximizar la respuesta del CPU.
 * **Debloat**: Remoción de aplicaciones preinstaladas (AppxPackages) y servicios no esenciales.
